@@ -1,48 +1,38 @@
-import {Component} from "react";
-import POSTS from "./Data";
 import AddedList from "./Components/AddedList";
+import useAppVM from "./viewModel/useAppVM.js";
+import PostsList from "./Components/PostsList";
+import Search from "./Components/Search";
+
 import "./index.css"
 
-class App extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            posts: POSTS,
-            editedPosts: POSTS,
-        };
-    }
+const App = () => {
 
-    removePost = (id) => {
-        const editedPosts = this.state.editedPosts.filter(post => id !== post.id)
-        this.setState({
-            editedPosts
-        })
-    }
+    const {
+        removePost,
+        getRestoredPost,
+        editedPosts
+    } = useAppVM();
 
-    getRestoredPost = (id) => {
-        let restoredPost = {};
-        for (const post of this.state.posts) {
-            if (id === post.id) {
-                restoredPost = {...post}
-            }
-        }
-
-        this.setState({
-            editedPosts: [...this.state.editedPosts, restoredPost]
-        })
-    }
-
-    render() {
-        const {editedPosts} = this.state;
-        console.log(editedPosts)
-        return (
-            <div className={'listsContainer'}>
-                <AddedList removePost={this.removePost} getRestoredPost={this.getRestoredPost} posts={editedPosts}/>
-                <AddedList removePost={this.removePost} getRestoredPost={this.getRestoredPost} posts={editedPosts}/>
+    return (
+        <div className={'listsContainer'}>
+            <div className={"container"}>
+                <PostsList/>
+                <Search/>
             </div>
-        )
-    }
-}
+            <div className={"container"}>
+                <AddedList
+                    removePost={removePost}
+                    getRestoredPost={getRestoredPost}
+                    posts={editedPosts}
+                />
+                <AddedList
+                    removePost={removePost}
+                    getRestoredPost={getRestoredPost}
+                    posts={editedPosts}/>
+            </div>
+
+        </div>
+    );
+};
 
 export default App;
-

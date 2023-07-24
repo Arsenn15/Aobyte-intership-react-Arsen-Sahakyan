@@ -1,0 +1,11 @@
+.input{
+    width: 300px;
+    border-radius: 5px;
+    outline: none;
+    border-color: #A7FFBA;
+    margin-bottom: 30px;
+}
+.commentTitle{
+    border-bottom: 1px solid #009dff;
+    font-style: italic;
+}
