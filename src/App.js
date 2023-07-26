@@ -2,6 +2,7 @@ import AddedList from "./Components/AddedList";
 import useAppVM from "./viewModel/useAppVM.js";
 import PostsList from "./Components/PostsList";
 import Search from "./Components/Search";
+import Pagination from "./Components/Pagination";
 
 import "./index.css"
 
@@ -16,7 +17,7 @@ const App = () => {
     return (
         <div className={'listsContainer'}>
             <div className={"container"}>
-                <PostsList/>
+                <Pagination/>
                 <Search/>
             </div>
             <div className={"container"}>
