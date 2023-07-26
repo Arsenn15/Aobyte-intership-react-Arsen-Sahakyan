@@ -14,7 +14,9 @@ const PostItem = ({post}) => {
     return (
         <div>
             <div className={"postContainer"} key={post.id}>
-                <img className={"postPhoto"} src={post.photoSrc} alt=""/>
+                <div>
+                    <img className={"postPhoto"} src={post.photoSrc} alt=""/>
+                </div>
                 <div className={"postNameBtn"}>
 
                     <span className={"postTitle"}>{post.title}</span>
@@ -26,7 +28,9 @@ const PostItem = ({post}) => {
                     <input
                         value={inputValue}
                         onChange={(event) => changeInputValue(event)}
-                        onKeyDown={(event) => addComments(event, post.id, inputValue)} type="text"/>
+                        onKeyDown={(event) => addComments(event, post.id, inputValue)} type="text"
+                        placeholder={"Comment..."}
+                    />
                 </div>
             </div>
         </div>

@@ -1,19 +1,15 @@
-import React, {useState} from 'react';
+import React from 'react';
 
-import posts from "../../Data";
 import PostItem from "../PostItem";
 
-import "../AddedList/index.css"
+import "../AddedList/index.css";
 
-
-const PostsList = () => {
-    const [allPosts, setAllPosts] = useState(posts)
+const PostsList = ({records}) => {
 
     return (
-        <div className={"listContainer"}>
             <div className={"addedPosts"}>
                 {
-                    allPosts.map(post => (
+                    records.map(post => (
                             <PostItem post={post}
                                       key={post.id}
                             />
@@ -21,8 +17,6 @@ const PostsList = () => {
                     )
                 }
             </div>
-
-        </div>
     );
 };
 
